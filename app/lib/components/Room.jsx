@@ -24,7 +24,7 @@ class Room extends React.Component
 			room,
 			me,
 			amActiveSpeaker,
-			onRoomLinkCopy
+			// onRoomLinkCopy
 		}	= this.props;
 
 		return (
