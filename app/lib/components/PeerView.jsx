@@ -96,6 +96,7 @@ export default class PeerView extends React.Component
 			maxSpatialLayer
 		} = this.state;
 
+		const { videoElem } = this.refs;
 		return (
 			<div data-component='PeerView'>
 				<div className='info'>
@@ -108,6 +109,19 @@ export default class PeerView extends React.Component
 						<div
 							className={classnames('icon', 'stats')}
 							onClick={() => onStatsClick(peer.id)}
+						/>
+
+						<div
+							className={classnames('icon', 'stats')}
+							onClick={() => {
+								if (videoElem.requestFullscreen) {
+									videoElem.requestFullscreen();
+								} else if (videoElem.webkitRequestFullscreen) {
+									videoElem.webkitRequestFullscreen();
+								} else if (videoElem.msRequestFullscreen) {
+									videoElem.msRequestFullscreen();
+								}
+							}}
 						/>
 					</div>
 
