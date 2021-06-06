@@ -98,7 +98,15 @@ export default class PeerView extends React.Component
 
 		const { videoElem } = this.refs;
 		return (
-			<div data-component='PeerView'>
+			<div data-component='PeerView' onDoubleClick={() => {
+				if (videoElem.requestFullscreen) {
+					videoElem.requestFullscreen();
+				} else if (videoElem.webkitRequestFullscreen) {
+					videoElem.webkitRequestFullscreen();
+				} else if (videoElem.msRequestFullscreen) {
+					videoElem.msRequestFullscreen();
+				}
+			}}>
 				<div className='info'>
 					<div className='icons'>
 						<div
@@ -111,18 +119,6 @@ export default class PeerView extends React.Component
 							onClick={() => onStatsClick(peer.id)}
 						/>
 
-						<div
-							className={classnames('icon', 'stats')}
-							onClick={() => {
-								if (videoElem.requestFullscreen) {
-									videoElem.requestFullscreen();
-								} else if (videoElem.webkitRequestFullscreen) {
-									videoElem.webkitRequestFullscreen();
-								} else if (videoElem.msRequestFullscreen) {
-									videoElem.msRequestFullscreen();
-								}
-							}}
-						/>
 					</div>
 
 					<div className={classnames('box', { visible: showInfo })}>
