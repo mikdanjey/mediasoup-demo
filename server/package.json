@@ -2,7 +2,7 @@
   "name": "mediasoup-demo-server",
   "version": "3.0.0",
   "private": true,
-  "description": "mediasoup demo server",
+  "description": "GurQool server",
   "author": "Iñaki Baz Castillo <ibc@aliax.net>",
   "license": "All Rights Reserved",
   "main": "lib/index.js",

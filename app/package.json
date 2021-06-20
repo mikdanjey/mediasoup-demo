@@ -2,7 +2,7 @@
   "name": "mediasoup-demo-app",
   "version": "3.0.0",
   "private": true,
-  "description": "mediasoup demo app",
+  "description": "GurQool app",
   "author": "Iñaki Baz Castillo <ibc@aliax.net>",
   "license": "All Rights Reserved",
   "main": "lib/index.jsx",
