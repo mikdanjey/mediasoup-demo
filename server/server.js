@@ -91,7 +91,7 @@ async function run() {
 async function runMediasoupWorkers() {
 	const { numWorkers } = config.mediasoup;
 
-	logger.info('running %d mediasoup Workers...', numWorkers);
+	// logger.info('running %d mediasoup Workers...', numWorkers);
 
 	for (let i = 0; i < numWorkers; ++i) {
 		const worker = await mediasoup.createWorker(
@@ -115,7 +115,7 @@ async function runMediasoupWorkers() {
 		setInterval(async () => {
 			const usage = await worker.getResourceUsage();
 
-			logger.info('mediasoup Worker resource usage [pid:%d]: %o', worker.pid, usage);
+			// logger.info('mediasoup Worker resource usage [pid:%d]: %o', worker.pid, usage);
 		}, 120000);
 	}
 }
@@ -124,7 +124,7 @@ async function runMediasoupWorkers() {
  * Create an Express based API server to manage Broadcaster requests.
  */
 async function createExpressApp() {
-	logger.info('creating Express app...');
+	// logger.info('creating Express app...');
 
 	expressApp = express();
 
@@ -389,7 +389,7 @@ async function createExpressApp() {
  * configuration file and reuses the Express application as request listener.
  */
 async function runHttpsServer() {
-	logger.info('running an HTTPS server...');
+	// logger.info('running an HTTPS server...');
 
 	// HTTPS server for the protoo WebSocket server.
 	//const tls =
@@ -410,7 +410,7 @@ async function runHttpsServer() {
  * Create a protoo WebSocketServer to allow WebSocket connections from browsers.
  */
 async function runProtooWebSocketServer() {
-	logger.info('running protoo WebSocketServer...');
+	// logger.info('running protoo WebSocketServer...');
 
 	// Create the protoo WebSocket server.
 	protooWebSocketServer = new protoo.WebSocketServer(httpsServer,
@@ -434,9 +434,9 @@ async function runProtooWebSocketServer() {
 			return;
 		}
 
-		logger.info(
-			'protoo connection request [roomId:%s, peerId:%s, address:%s, origin:%s]',
-			roomId, peerId, info.socket.remoteAddress, info.origin);
+		// logger.info(
+		// 	'protoo connection request [roomId:%s, peerId:%s, address:%s, origin:%s]',
+		// 	roomId, peerId, info.socket.remoteAddress, info.origin);
 
 		// Serialize this code into the queue to avoid that two peers connecting at
 		// the same time with the same roomId create two separate rooms with same
@@ -477,7 +477,7 @@ async function getOrCreateRoom({ roomId }) {
 
 	// If the Room does not exist create a new one.
 	if (!room) {
-		logger.info('creating a new Room [roomId:%s]', roomId);
+		// logger.info('creating a new Room [roomId:%s]', roomId);
 
 		const mediasoupWorker = getMediasoupWorker();
 
