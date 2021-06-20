@@ -54,6 +54,8 @@ export default class PeerView extends React.Component
 		this._faceDetectionRequestAnimationFrame = null;
 	}
 
+	sleeper = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
 	render()
 	{
 		const {
@@ -695,7 +697,7 @@ export default class PeerView extends React.Component
 
 				// const resizedDetection = detection.forSize(width, height);
 				const resizedDetections =
-					faceapi.resizeResults(detection, { width, height });
+				faceapi.resizeResults(detection, { width, height });
 
 				faceapi.draw.drawDetections(canvas, resizedDetections);
 			}
