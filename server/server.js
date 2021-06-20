@@ -136,6 +136,7 @@ async function createExpressApp() {
 	 */
 	expressApp.param(
 		'roomId',
+
 		(req, res, next, roomId) => {
 			// The room must exist for all API requests.
 			if (!rooms.has(roomId)) {
@@ -394,11 +395,11 @@ async function runHttpsServer() {
 	// HTTPS server for the protoo WebSocket server.
 	const tls =
 	{
-		cert : fs.readFileSync(config.https.tls.cert),
-		key  : fs.readFileSync(config.https.tls.key)
+		cert: fs.readFileSync(config.https.tls.cert),
+		key: fs.readFileSync(config.https.tls.key)
 	};
 
-	httpsServer = https.createServer(expressApp, tls);
+	httpsServer = https.createServer(tls, expressApp);
 
 	await new Promise((resolve) => {
 		httpsServer.listen(

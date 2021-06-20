@@ -13,7 +13,7 @@ const os = require('os');
 module.exports =
 {
 	// Listening hostname (just for `gulp live` task).
-	domain: process.env.DOMAIN || 'webrtc1.ithots.tech',
+	domain: process.env.DOMAIN || 'class.gurqool.live',
 	// Signaling settings (protoo WebSocket server and HTTP API server).
 	https:
 	{
